@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 /**
  * One line of text.
@@ -15,15 +14,18 @@ public class TextLine implements TextBlock {
    * The contents of the line.
    */
   String line;
+  TextBlock child;
 
   // +--------------+------------------------------------------------------
   // | Constructors |
   // +--------------+
 
   /**
-   * Build a new line with the specified contents.
+   * Build a new line with the specified contents. make the child null as a
+   * TextLine can never have a child
    */
   public TextLine(String line) {
+    this.child = null;
     this.line = line;
   } // TextLine(String)
 
@@ -62,10 +64,8 @@ public class TextLine implements TextBlock {
    * getChildren method for TextLine. This adds null, as TextLine cannot have
    * children
    */
-  public ArrayList<TextBlock> getChildren() {
-    ArrayList<TextBlock> returnArr = new ArrayList<>();
-    returnArr.add(this);
-    return returnArr;
-  }
+  public TextBlock[] getChildren() {
+    return null;
+  }// getChildren
 }
 // class TextLine

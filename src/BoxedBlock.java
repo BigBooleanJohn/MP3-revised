@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 /**
  * A text block surrounded by a box.
@@ -69,9 +68,9 @@ public class BoxedBlock implements TextBlock {
 
   /* return the children of the block */
 
-  public ArrayList<TextBlock> getChildren() {
-    ArrayList<TextBlock> returnArr = new ArrayList<>();
-    returnArr.add(contents);
-    return returnArr;
+  public TextBlock[] getChildren() {
+    TextBlock[] arr = new TextBlock[1];
+    arr[0] = this.contents;
+    return arr;
   }
 } // class BoxedBlock

@@ -79,31 +79,21 @@ public class TBUtils {
    */
   public boolean equal(TextBlock t1, TextBlock t2) {
     if (t1.height() != t2.height()) {
-      return false;// if the two blocks do not have the same amount of rows, they will be unequal
+      return false;
     } else {
-      int height = t1.height();// both heights will be the same, so this will be the height variable
+      int height = t1.height();
       for (int i = 0; i < height; i++) {
         try {
           if (t1.row(i).compareTo(t2.row(i)) != 0) {
-            return false; // if the strings in both rows do not match, return false
+            return false;
           }
         } catch (Exception e) {
           e.printStackTrace();
-        }
-      }
+        } // try/catch
+      } // for
       return true;// if the previous condition was not met, the strings are equal, return true
     }
-  }
-
-  /*
-   * I wrote this function because in the textblocks, Strings have many
-   * space characters in them that make them longer than expected. this method
-   * returns the string that is made up of solely made up of alphabetic chars
-   */
-  public static String newString(String s) {
-    String[] parsedArr = s.split(" ");
-    return parsedArr[0];
-  }
+  }// equal
 
   /*
    * checking equivalency by construction method
@@ -113,32 +103,24 @@ public class TBUtils {
    * @Post: returns a boolean
    */
   public boolean eqv(TextBlock t1, TextBlock t2) {
-    if (t1.getClass().getName().equals(t2.getClass().getName())) {
-      System.out.printf("The classes match!\n");
-      if (t1.getClass().getName().equals("TextLine") || t1.getClass().getName().equals("Centered")
-          || t1.getClass().getName().equals("VerticallyFlipped") || t1.getClass().getName().equals("Truncated")
-          || t1.getClass().getName().equals("HorizontallyFlipped")
-          || t1.getClass().getName().equals("ReversedAndFlipped")) {
-        System.out.printf("The classes are the last blocks!\n");
+    if (t1.getClass().equals(t2.getClass())) {
+      if (t1.getClass().getName().equals("TextLine")) {
         return true;
-      } else if (t1.getClass().getName().equals("BoxedBlock")) {
-        BoxedBlock b1 = (BoxedBlock) t1;
-        BoxedBlock b2 = (BoxedBlock) t2;
-        eqv(b1.contents, b2.contents);
-      } else if (t1.getClass().getName().equals("VComposition")) {
-        VComposition V1 = (VComposition) t1;
-        VComposition V2 = (VComposition) t2;
-        eqv(V1.top, V2.top);
-        eqv(V1.bottom, V2.bottom);
-      } else if (t1.getClass().getName().equals("HComposition")) {
-        HComposition H1 = (HComposition) t1;
-        HComposition H2 = (HComposition) t2;
-        eqv(H1.left, H2.left);
-        eqv(H1.right, H2.right);
+      } else if (t1.getClass().getName().equals("Centered")
+          || t1.getClass().getName().equals("HorizontallyFlipped")
+          || t1.getClass().getName().equals("ReversedAndFlipped")
+          || t1.getClass().getName().equals("RightJustified")
+          || t1.getClass().getName().equals("Truncated")
+          || t1.getClass().getName().equals("VerticallyFlipped")
+          || t1.getClass().getName().equals("BoxedBlock")) {
+        return eqv(t1.getChildren()[0], t2.getChildren()[0]);
+      } else if (t1.getClass().getName().equals("HComposition") || t1.getClass().getName().equals("VComposition")) {
+        return (eqv(t1.getChildren()[0], t2.getChildren()[0])
+            && eqv(t1.getChildren()[1], t2.getChildren()[1]));
       }
     }
     return false;
-  }
+  }// eqv
 
   /*
    * checking equivalency by memory
@@ -149,6 +131,6 @@ public class TBUtils {
    */
   public boolean eq(TextBlock t1, TextBlock t2) {
     return t1 == t2;
-  }
+  }// eq
 }
 // class TBUtils

@@ -1,18 +1,15 @@
-import java.util.ArrayList;
 
 /*Truncated is a method that truncates a TextBlock onject. It was written By John Miller for mini-project 3:
 */
-
-/*TODO: determine how to make Truncated be an implmementation of
- * TextBlock WITH MANY LEVELS OF TRUNKBLOCKS! for 11/18
- */
 /*the class Truncated implements TextBlock's methods */
 public class Truncated implements TextBlock {
+    TextBlock child;
     TextLine[] TrunkBlock;
     int TrunkIndex;
 
     /* Truncated constructor */
     public Truncated(int _TrunkIndex, TextBlock TBInput) {
+        this.child = TBInput;
         this.TrunkBlock = new TextLine[TBInput.height()];
         for (int i = 0; i < TBInput.height(); i++) {
             try {
@@ -54,19 +51,21 @@ public class Truncated implements TextBlock {
     /*
      * truncator is a method that refers to a Truncated object, and based on the
      * truncateIndex field of the object, truncates the object to the appropriate
-     * length
-     * if it is shorter, it will center the object. it will left-justify slightly.
+     * length if it is shorter, it will right justify.
      */
     public TextBlock truncator() {
         try {
             for (int i = 0; i < this.height(); i++) {
                 if (this.row(i).length() > this.TrunkIndex) {
-                    this.TrunkBlock[i] = new TextLine(this.row(i).substring(0, this.TrunkIndex));// truncate the line
+                    this.TrunkBlock[i] = new TextLine(this.row(i).substring(0, this.TrunkIndex));
+                } else if (this.row(i).length() < this.TrunkIndex) {
+                    this.TrunkBlock[i] = new TextLine(
+                            this.row(i) + TBUtils.spaces(this.TrunkIndex - this.row(i).length()));
                 }
-            }
+            } // for
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } // try/catch
         return this;// return the TruncatedBlock TextBlock implementation
     }
 
@@ -74,9 +73,9 @@ public class Truncated implements TextBlock {
      * getChildren method for Truncated. This adds null, as centered cannot have
      * children
      */
-    public ArrayList<TextBlock> getChildren() {
-        ArrayList<TextBlock> returnArr = new ArrayList<>();
-        returnArr.add(this);
-        return returnArr;
-    }
-}
+    public TextBlock[] getChildren() {
+        TextBlock[] arr = new TextBlock[1];
+        arr[0] = this.child;
+        return arr;
+    }// getChildren
+}// Truncated

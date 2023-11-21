@@ -28,4 +28,9 @@ public interface TextBlock {
      */
     public int width();
 
+    /*
+     * determine the children of the given TextBlock]
+     */
+    public TextBlock[] getChildren();
+
 } // interface TextBlock

@@ -1,12 +1,13 @@
-import java.util.ArrayList;
 
 /*the class Centered implements TextBlock's methods */
 public class Centered implements TextBlock {
+    TextBlock child;
     TextLine[] CenteredBlock;
     int CenteredIndex;
 
     /* Truncated constructor */
     public Centered(int intInput, TextBlock TBInput) {
+        this.child = TBInput;
         this.CenteredIndex = intInput;
         this.CenteredBlock = new TextLine[TBInput.height()];
         for (int i = 0; i < TBInput.height(); i++) {
@@ -46,8 +47,7 @@ public class Centered implements TextBlock {
 
     /*
      * RightJustifier is a method that refers to a RightJustified object, and based
-     * on
-     * the RightIndex field of the object, it will justify it to the right if the
+     * on the RightIndex field of the object, it will justify it to the right if the
      * string
      * is shorter than the RightIndex field of the object
      */
@@ -59,20 +59,23 @@ public class Centered implements TextBlock {
                     String justifiedRight = TBUtils.spaces((this.CenteredIndex - this.row(i).length()) / 2)
                             + this.row(i) + TBUtils.spaces((this.CenteredIndex - this.row(i).length()) / 2);
                     this.CenteredBlock[i] = new TextLine(justifiedRight);
-                }
-            }
+                } else if (this.row(i).length() > this.CenteredIndex) {
+                    String CenTruncated = this.row(i).substring(0, this.CenteredIndex);
+                    this.CenteredBlock[i] = new TextLine(CenTruncated);
+                } // if
+            } // for
         } catch (Exception E) {
         }
         return this;
-    }
+    }// CenteredJustifier
 
     /*
      * getChildren method for centered. This adds null, as centered cannot have
      * children
      */
-    public ArrayList<TextBlock> getChildren() {
-        ArrayList<TextBlock> returnArr = new ArrayList<>();
-        returnArr.add(this);
-        return returnArr;
+    public TextBlock[] getChildren() {
+        TextBlock[] arr = new TextBlock[1];
+        arr[0] = this.child;
+        return arr;
     }
 }

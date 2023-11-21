@@ -1,9 +1,8 @@
-import java.util.ArrayList;
 
 /**
  * The vertical composition of two text blocks.
  * 
- * @author Samuel A. Rebelsky
+ * @author Samuel A. Rebelsky, John Miller
  * @version 1.2 of February 2019
  */
 public class VComposition implements TextBlock {
@@ -87,15 +86,11 @@ public class VComposition implements TextBlock {
     return Math.max(this.top.width(), this.bottom.width());
   } // width()
 
-  /*
-   * getChildren method for centered. This adds null, as centered cannot have
-   * children
-   */
-  public ArrayList<TextBlock> getChildren() {
-    ArrayList<TextBlock> returnArr = new ArrayList<>();
-    returnArr.add(this.top);
-    returnArr.add(this.bottom);
-    return returnArr;
-  }
-
+  /* getChildren method for VComposition */
+  public TextBlock[] getChildren() {
+    TextBlock[] arr = new TextBlock[2];
+    arr[0] = this.bottom;
+    arr[1] = this.top;
+    return arr;
+  }// getChildren
 } // class VComposition

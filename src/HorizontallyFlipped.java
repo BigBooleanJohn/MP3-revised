@@ -1,11 +1,12 @@
-import java.util.ArrayList;
 
 /*this is a class that flips the TextBlock field horizontally */
 public class HorizontallyFlipped implements TextBlock {
+    TextBlock child;
     TextLine[] HorizFlipBlock;
 
     /* Truncated constructor */
     public HorizontallyFlipped(TextBlock TBInput) {
+        this.child = TBInput;
         this.HorizFlipBlock = new TextLine[TBInput.height()];
         for (int i = 0; i < TBInput.height(); i++) {// for each row in the input TextBlock
             try {
@@ -58,16 +59,16 @@ public class HorizontallyFlipped implements TextBlock {
             }
         }
         return this;// return the object
-    }
+    }// HorizFlipper
 
     /*
      * getChildren method for HorizontallyFlipped. This adds null, as centered
      * cannot have
      * children
      */
-    public ArrayList<TextBlock> getChildren() {
-        ArrayList<TextBlock> returnArr = new ArrayList<>();
-        returnArr.add(this);
-        return returnArr;
-    }
+    public TextBlock[] getChildren() {
+        TextBlock[] arr = new TextBlock[1];
+        arr[0] = this.child;
+        return arr;
+    }// getChildren
 }

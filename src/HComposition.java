@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 
 /**
  * The horizontal composition of two text blocks.
@@ -86,16 +85,13 @@ public class HComposition implements TextBlock {
         return this.left.width() + this.right.width();
     } // width()
 
-    /*
-     * getChildren method for HComposition. This adds null, as centered cannot have
-     * children
-     */
-    public ArrayList<TextBlock> getChildren() {
-        ArrayList<TextBlock> returnArr = new ArrayList<>();
-        returnArr.add(this.left);
-        returnArr.add(this.right);
-        return returnArr;
-    }
+    /* getChildren */
+    public TextBlock[] getChildren() {
+        TextBlock[] arr = new TextBlock[2];
+        arr[0] = this.left;
+        arr[1] = this.right;
+        return arr;
+    }// getChildren
 }
 
 // class HComposition

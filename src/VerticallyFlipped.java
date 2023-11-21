@@ -1,11 +1,12 @@
-import java.util.ArrayList;
 
-/*This vertically flips a TextBlock; that is, it flips row by row*/
+/*This vertically flips a TextBlock; that is, it flips row by row. Written by john Miller*/
 public class VerticallyFlipped implements TextBlock {
+    TextBlock child;
     TextLine[] FlipBox;
 
     /* Truncated constructor */
     public VerticallyFlipped(TextBlock TBInput) {
+        this.child = TBInput;
         this.FlipBox = new TextLine[TBInput.height()];
         for (int i = 0; i < TBInput.height(); i++) {
             try {
@@ -63,9 +64,9 @@ public class VerticallyFlipped implements TextBlock {
      * getChildren method for centered. This adds null, as centered cannot have
      * children
      */
-    public ArrayList<TextBlock> getChildren() {
-        ArrayList<TextBlock> returnArr = new ArrayList<>();
-        returnArr.add(this);
-        return returnArr;
-    }
-}
+    public TextBlock[] getChildren() {
+        TextBlock[] arr = new TextBlock[1];
+        arr[0] = this.child;
+        return arr;
+    }// getChildren
+}// class VerticallyFlipped

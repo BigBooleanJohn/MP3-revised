@@ -1,10 +1,11 @@
-import java.util.ArrayList;
-
+/*this is an implementation of a TextBlock for MP3, written by John Miller */
 public class ReversedAndFlipped implements TextBlock {
     TextLine[] RFBox;
+    TextBlock child;
 
     /* Truncated constructor */
     public ReversedAndFlipped(TextBlock TBInput) {
+        this.child = TBInput;
         this.RFBox = new TextLine[TBInput.height()];
         for (int i = 0; i < this.height(); i++) {
             try {
@@ -60,21 +61,21 @@ public class ReversedAndFlipped implements TextBlock {
                 this.RFBox[max] = new TextLine(minimum.toString());
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            } // try/catch
             min++;
             max--;
-        }
+        } // while
         return this;
-    }
+    }// BothFlipper
 
     /*
      * getChildren method for centered. This adds null, as ReversedAndFlipped cannot
      * have
      * children
      */
-    public ArrayList<TextBlock> getChildren() {
-        ArrayList<TextBlock> returnArr = new ArrayList<>();
-        returnArr.add(this);
-        return returnArr;
-    }
+    public TextBlock[] getChildren() {
+        TextBlock[] arr = new TextBlock[1];
+        arr[0] = this.child;
+        return arr;
+    }// getChildren
 }

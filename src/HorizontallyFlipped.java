@@ -1,5 +1,5 @@
 
-/*this is a class that flips the TextBlock field horizontally */
+/*this is a class that flips the TextBlock field horizontally. it is written by John Miller */
 public class HorizontallyFlipped implements TextBlock {
     TextBlock child;
     TextLine[] HorizFlipBlock;

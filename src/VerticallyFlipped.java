@@ -50,6 +50,8 @@ public class VerticallyFlipped implements TextBlock {
     /*
      * VerticalFlipper is a method that takes a VerticallyFlipped
      * object and flips the rows in the text field so that theyre vertically flipped
+     * @Pre: none
+     * @Post: return the proper object
      */
     public TextBlock VerticalFlipper() {
         int min = 0;

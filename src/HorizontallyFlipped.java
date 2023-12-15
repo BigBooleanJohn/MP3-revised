@@ -16,7 +16,10 @@ public class HorizontallyFlipped implements TextBlock {
             }
         }
     }
-
+ /* get the row at given index
+  * @Pre: i is an integer
+  * @Post: returns a string or Exception
+  */
     public String row(int i) throws Exception {
         if (i > this.height()) {
             throw new Exception("Invalid row " + i);
@@ -47,6 +50,8 @@ public class HorizontallyFlipped implements TextBlock {
      * HorizFlipper is a method that refers to a HorizontallyFlipped object, and
      * flips the
      * object's rows
+     * @Pre: none
+     * @Post: returns the proper object
      */
     public TextBlock HorizFlipper() {
         for (int i = 0; i < this.height(); i++) {

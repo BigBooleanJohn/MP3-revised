@@ -16,7 +16,11 @@ public class VerticallyFlipped implements TextBlock {
             }
         }
     }
-
+    /*
+     * get string at row i
+     * @Pre: none
+     * @Post: returns the proper string
+     */
     public String row(int i) throws Exception {
         if (i > this.height()) {
             throw new Exception("Invalid row " + i);

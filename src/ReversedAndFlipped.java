@@ -47,6 +47,8 @@ public class ReversedAndFlipped implements TextBlock {
      * object and flips the rows in the text field so that theyre vertically
      * flipped,
      * and flips the rows as well
+     * @Pre: none
+     * @Post: returns the proper object
      */
     public TextBlock BothFlipper() {
         int min = 0;

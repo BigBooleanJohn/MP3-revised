@@ -18,7 +18,11 @@ public class Centered implements TextBlock {
             }
         }
     }
-
+ /* 
+  *get the row at given index
+  * @Pre: i is an integer
+  * @Post: returns a string or Exception
+  */
     public String row(int i) throws Exception {
         if (i > this.height()) {
             throw new Exception("Invalid row " + i);
@@ -50,6 +54,8 @@ public class Centered implements TextBlock {
      * on the RightIndex field of the object, it will justify it to the right if the
      * string
      * is shorter than the RightIndex field of the object
+     * @Pre: none
+     * @Post: returns the proper object
      */
     public TextBlock CenteredJustifier() {
         try {

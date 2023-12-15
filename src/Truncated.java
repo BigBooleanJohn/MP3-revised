@@ -52,6 +52,8 @@ public class Truncated implements TextBlock {
      * truncator is a method that refers to a Truncated object, and based on the
      * truncateIndex field of the object, truncates the object to the appropriate
      * length if it is shorter, it will right justify.
+     * @Pre: none
+     * @Post: returns the proper object
      */
     public TextBlock truncator() {
         try {

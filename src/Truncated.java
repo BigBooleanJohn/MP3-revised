@@ -20,7 +20,12 @@ public class Truncated implements TextBlock {
         }
         this.TrunkIndex = _TrunkIndex;
     }
-
+    
+    /*
+     * get the string associated with row i
+     * @Pre: none
+     * @Post: returns the proper string, or throws Exception
+     */
     public String row(int i) throws Exception {
         if (i >= this.height()) {
             throw new Exception("Invalid row " + i);

@@ -51,6 +51,8 @@ public class RightJustified implements TextBlock {
      * the RightIndex field of the object, it will justify it to the right if the
      * string
      * is shorter than the RightIndex field of the object
+     * @Pre: none
+     * @Post: returns the proper object
      */
     public TextBlock RightJustifier() {
         try {
